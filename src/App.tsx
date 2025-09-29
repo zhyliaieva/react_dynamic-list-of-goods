@@ -87,7 +87,7 @@ export const App: React.FC = () => {
 
       {loading && <p>Loading...</p>}
       {errorMessage && <p className="error">{errorMessage}</p>}
-      {!errorMessage && !loading && <GoodsList goods={goods}  />}
+      {!errorMessage && !loading && <GoodsList goods={goods} />}
     </div>
   );
 };
