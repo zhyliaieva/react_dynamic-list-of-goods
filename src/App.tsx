@@ -32,6 +32,8 @@ export const App: React.FC = () => {
   function handleLoadAll(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
+    event.preventDefault();
+
     setLoading(true);
     setErrorMessage('');
     getAll()
@@ -43,6 +45,7 @@ export const App: React.FC = () => {
   function handleLoadRed(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
+    event.preventDefault();
     setLoading(true);
     setErrorMessage('');
     getRed()
@@ -54,6 +57,7 @@ export const App: React.FC = () => {
   function handleLoadFirstFive(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
+    event.preventDefault();
     setLoading(true);
     setErrorMessage('');
     get5First()
@@ -84,7 +88,7 @@ export const App: React.FC = () => {
 
       {!loadiing && <p>Loading...</p>}
       {errorMessage && <p className="error">{errorMessage}</p>}
-      {!errorMessage && !loadiing && <GoodsList goods={goods} key={good.id}/>}
+      {!errorMessage && !loadiing && <GoodsList goods={goods} key={good.id} />}
     </div>
   );
 };
