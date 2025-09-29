@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import { GoodsList } from './GoodsList';
 
-import { getAll, get5First, getRed } from '../src/api/goods';
+import { getAll, get5First, getRed } from './api/goods';
 
-//import * as goodsAPI from '../src/api/goods';
 type Good = {
   id: number;
   name: string;
@@ -13,7 +12,7 @@ type Good = {
 };
 
 export const App: React.FC = () => {
-  const [loadiing, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [goods, setGoods] = React.useState<Good[]>([]);
 
@@ -86,9 +85,9 @@ export const App: React.FC = () => {
         Load red goods
       </button>
 
-      {!loadiing && <p>Loading...</p>}
+      {loading && <p>Loading...</p>}
       {errorMessage && <p className="error">{errorMessage}</p>}
-      {!errorMessage && !loadiing && <GoodsList goods={goods} key={good.id} />}
+      {!errorMessage && !loading && <GoodsList goods={goods}  />}
     </div>
   );
 };
