@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.scss';
 import { GoodsList } from './GoodsList';
 
@@ -15,18 +15,6 @@ export const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [goods, setGoods] = React.useState<Good[]>([]);
-
-  useEffect(() => {
-    const delayTimer = setTimeout(() => setLoading(true), 200);
-
-    getAll()
-      .then(setGoods)
-      .catch((error: Error) => setErrorMessage(error.message))
-      .finally(() => {
-        clearTimeout(delayTimer);
-        setTimeout(() => setLoading(false), 500);
-      });
-  }, []);
 
   function handleLoadAll(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
